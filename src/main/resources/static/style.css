@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+body {
+    background: #1a1a1a;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+}
+
+.calculator {
+    width: clamp(260px, 32vw, 340px);
+    max-height: 95vh;
+    background: #000;
+    padding: clamp(12px, 1.5vw, 18px);
+    border-radius: clamp(18px, 2vw, 28px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+.display {
+    color: #fff;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 300;
+    text-align: right;
+    padding: 10px 8px 8px;
+    min-height: clamp(56px, 8vh, 90px);
+    overflow: hidden;
+    word-wrap: break-word;
+    line-height: 1;
+}
+
+.display.small {
+    font-size: clamp(24px, 3.5vw, 42px);
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(6px, 0.8vw, 10px);
+}
+
+button {
+    aspect-ratio: 1 / 1;
+    border: none;
+    border-radius: 50%;
+    font-size: clamp(18px, 2vw, 28px);
+    font-weight: 400;
+    cursor: pointer;
+    color: #fff;
+    transition: filter 0.1s;
+    font-family: inherit;
+    padding: 0;
+}
+
+button:active {
+    filter: brightness(1.4);
+}
+
+.num {
+    background: #333;
+}
+
+.num:hover {
+    background: #3d3d3d;
+}
+
+.func {
+    background: #a5a5a5;
+    color: #000;
+}
+
+.func:hover {
+    background: #b5b5b5;
+}
+
+.op {
+    background: #ff9f0a;
+    font-size: clamp(22px, 2.2vw, 32px);
+}
+
+.op:hover {
+    background: #ffae2d;
+}
+
+.op.active {
+    background: #fff;
+    color: #ff9f0a;
+}
+
+.span-2 {
+    grid-column: span 2;
+    aspect-ratio: auto;
+    border-radius: 999px;
+    text-align: left;
+    padding-left: clamp(20px, 2vw, 30px);
+}
+
+@media (max-height: 640px) {
+    .calculator {
+        width: min(50vh, 340px);
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 8px;
+    }
+    .calculator {
+        width: min(92vw, 55vh);
+    }
+}
