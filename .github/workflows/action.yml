@@ -17,13 +17,21 @@ jobs:
     timeout-minutes: 30
 
     steps:
-      - name: Set up JDK 21
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
           cache: 'gradle'
 
-      - name: Build Docker images
-        run: |
-          docker build -t MyService:latest -f Dockerfile .
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build and test with Gradle
+        run: ./gradlew clean build test
+
+      - name: Build Docker image
+        run: docker build -t lucasfariafr/ubuntu-java:1 -f Dockerfile .
