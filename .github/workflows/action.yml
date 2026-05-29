@@ -78,7 +78,7 @@ jobs:
         run: ./gradlew test jacocoTestReport
 
       - name: SonarCloud analysis
-        run: ./gradlew sonar
+        uses: SonarSource/sonarcloud-github-action@v3
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
