@@ -42,6 +42,13 @@ jobs:
           path: build/reports/tests/test
           retention-days: 7
 
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: build/reports/jacoco/test/jacocoTestReport.xml
+          fail_ci_if_error: false
+
   build:
     name: Build application
     runs-on: ubuntu-latest
